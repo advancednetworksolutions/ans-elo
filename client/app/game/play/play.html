@@ -1,0 +1,92 @@
+<navbar></navbar>
+<div ng-show="!gameStart"style="font-size:30px;" class="container">
+  <div style="padding-top:100px;padding-bottom:100px;" class="row">
+    <div class="col-md-5">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="rank_system">Player 1</label>
+          <div class="col-md-4">
+            <select ng-model="player1.name" ng-change="changeSelectedItem('1')" class="form-control"  ng-options="x.name for x in players">
+              <option></option>
+            </select>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      VS
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="rank_system">Player 2</label>
+        <div class="col-md-4">
+          <select ng-model="player2.name" ng-change="changeSelectedItem('2')" class="form-control"  ng-options="x.name for x in players">
+            <option></option>
+          </select>
+
+      </div>
+    </div>
+    </div>
+  </div>
+  <div style="padding-top:100px;padding-bottom:100px;" class="row">
+    <div class="col-md-12">
+      <button ng-click="startGame()" class=" play-button btn btn-warning" type="button" name="button">Start Game</a>
+    </div>
+  </div>
+</div>
+<div style="font-size:50px;" ng-show="gameStart" class="container">
+  <h1>Game In Progress</h1>
+  <div style="padding-top:25px;padding-bottom:25px;"class="row">
+    <div style="text-align:center;" class="col-md-5">
+      {{gameInProgress.player1.name.name}}
+      <p style="font-size:20px;">Elo Rating: {{gameInProgress.player1.name.points}}</p>
+      <p style="font-size:20px;">Win chance: {{gameInProgress.player1.name.chanceToWin}}%</p>
+    </div>
+    <div style="text-align:center;" class="col-md-1">
+      VS
+    </div>
+    <div style="text-align:center;" class="col-md-5">
+      {{gameInProgress.player2.name.name}}
+      <p style="font-size:20px;">Elo Rating: {{gameInProgress.player2.name.points}}</p>
+      <p style="font-size:20px;">Win chance: {{gameInProgress.player2.name.chanceToWin}}%</p>
+    </div>
+  </div>
+  <div ng-if="!gameEnded" style="padding-top:25px;padding-bottom:25px;" class="row">
+    <div class="col-md-12">
+      <button ng-click="endGame()" class="play-button btn btn-default" type="button" name="button">End Game</button>
+    </div>
+  </div>
+<div ng-if="gameEnded"class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="rank_system">Winner</label>
+      <div class="col-md-4">
+        <select ng-model="gameInProgress.winner" ng-change="changeSelectedItem('1')" class="form-control">
+          <option>{{player1.name.name}}</option>
+          <option>{{player2.name.name}}</option>
+
+        </select>
+
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="rank_system">Loser</label>
+    <div class="col-md-4">
+      <select ng-model="gameInProgress.loser" ng-change="changeSelectedItem('2')" class="form-control">
+        <option>{{player1.name.name}}</option>
+        <option>{{player2.name.name}}</option>
+
+      </select>
+
+  </div>
+</div>
+</div>
+
+</div>
+<div ng-if="gameInProgress.winner && gameInProgress.loser" style="padding-top:25px;padding-bottom:25px;" class="row">
+  <div class="col-md-12">
+    <button ng-click="finalizeGame()" class="play-button btn btn-default" type="button" name="button">Save Game</button>
+  </div>
+</div>
+</div>

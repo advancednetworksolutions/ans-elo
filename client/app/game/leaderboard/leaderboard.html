@@ -1,0 +1,50 @@
+<navbar></navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <a class="btn btn-default" ng-href="/game/{{games[0]._id}}" type="button" name="button">Back</a>
+      <h1>{{games[0].name}} Leaderboard</h1>
+      <div class="panel panel-default">
+        <table class="table table-striped">
+          <thead>
+            <th>
+              Rank
+            </th>
+            <th>
+              Player
+            </th>
+            <th>
+              Rating
+            </th>
+            <th>
+              W
+            </th>
+            <th>
+              L
+            </th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="player in games[0].players | orderBy:'-points'">
+              <td>
+                {{$index + 1}}
+              </td>
+              <td>
+                {{player.name}}
+              </td>
+              <td>
+                {{player.points}} <span ng-class="{'success': player.delta > 0,'error': player.delta < 0}"><span ng-show="player.delta>0">+</span>{{player.delta}}</span>
+              </td>
+              <td>
+                {{player.wins}}
+              </td>
+              <td>
+                {{player.losses}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<navbar></navbar>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>Select a Game</h1>
+      <div ng-repeat="game in main.games track by game._id | orderBy:'-players.length'"ng-click="main.go('/game/'+game._id)" class="game panel panel-default">
+        <div class="game-content">
+          <h3>{{ game.name }}</h3>
+          <span>{{ game.rating_system }}</span>
+          <p>
+            Players: {{game.players.length}}
+          </p>
+          <p>
+            Games Played: {{game.results.length}}
+          </p>
+        </div>
+      </div>
+      <!--<div class="col-md-12">
+        <button ng-click="main.go('/game/new/')" class="btn btn-default" type="button" name="button">Create Game</button>
+      </div>-->
+    </div>
+    <div class="col-md-7">
+<h1>Players</h1>
+<div style="padding:5px;">
+  <button  ng-click="main.go('/player/new')" class="btn btn-default" type="button" name="button">Create Player</button>
+
+</div>
+      <div class="panel panel-default">
+        <table class="table table-striped">
+          <thead>
+            <th>
+              Player
+            </th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="player in main.players | orderBy:'-points'">
+              <td>
+                {{player.name}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

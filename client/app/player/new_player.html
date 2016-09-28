@@ -1,0 +1,34 @@
+<navbar></navbar>
+<div class="container">
+  <form class="form-horizontal">
+  <fieldset>
+
+  <!-- Form Name -->
+  <legend>Create Player</legend>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Full Name</label>
+    <div class="col-md-4">
+    <input ng-model="player.name" id="textinput" name="textinput" type="text" placeholder="your real name" class="form-control input-md">
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Email</label>
+    <div class="col-md-4">
+    <input ng-model="player.email" id="textinput" name="textinput" type="email" placeholder="ANS Email" class="form-control input-md">
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 col-md-offset-4">
+      <button ng-click="savePlayer()" class="btn btn-default" type="button" name="button">Save</button>
+    </div>
+  </div>
+
+  </fieldset>
+  </form>
+
+</div>
